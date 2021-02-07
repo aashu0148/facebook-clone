@@ -1,0 +1,20 @@
+.navbar {
+  display: flex;
+  width: 100%;
+}
+.navbar_start,
+.navbar_middle,
+.navbar_end {
+  display: flex;
+}
+.navbar_start img {
+  height: 40px;
+  width: 40px;
+}
+.navbar_search-icon-btn {
+  background-color: #eee !important;
+  padding: 8px !important;
+}
+.navbar_icon-btn {
+  background-color: #ddd !important;
+}
