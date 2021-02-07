@@ -16,32 +16,44 @@ function Navbar() {
     <div className="navbar">
       <div className="navbar_start">
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Facebook_f_logo_%282019%29.svg/1200px-Facebook_f_logo_%282019%29.svg.png"></img>
-        <IconButton className="navbar_search-icon-btn">
-          <SearchIcon />
-        </IconButton>
-        <input type="text"></input>
+        <div className="navbar_search">
+          <IconButton className="navbar_search-icon-btn">
+            <SearchIcon />
+          </IconButton>
+          <input type="text" placeholder="Search Facebook"></input>
+        </div>
       </div>
       <div className="navbar_middle">
-        <HomeIcon />
-        <SubscriptionsIcon />
-        <GroupRoundedIcon />
-        <StoreRoundedIcon />
-        <SportsEsportsIcon />
+        <div className="navbar_option">
+          <HomeIcon />
+        </div>
+        <div className="navbar_option">
+          <SubscriptionsIcon />
+        </div>
+        <div className="navbar_option">
+          <GroupRoundedIcon />
+        </div>
+        <div className="navbar_option">
+          <StoreRoundedIcon />
+        </div>
+        <div className="navbar_option">
+          <SportsEsportsIcon />
+        </div>
       </div>
       <div className="navbar_end">
         <div className="navbar_profile">
           <Avatar />
         </div>
-        <IconButton className="navbar_icon-btn">
+        <IconButton>
           <AddIcon />
         </IconButton>
-        <IconButton className="navbar_icon-btn">
+        <IconButton>
           <ForumIcon />
         </IconButton>
-        <IconButton className="navbar_icon-btn">
+        <IconButton>
           <NotificationsActiveIcon />
         </IconButton>
-        <IconButton className="navbar_icon-btn">
+        <IconButton>
           <ArrowDropDownIcon />
         </IconButton>
       </div>
