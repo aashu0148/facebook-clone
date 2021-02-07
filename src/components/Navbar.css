@@ -1,20 +1,59 @@
 .navbar {
   display: flex;
+  justify-content: space-between;
   width: 100%;
+  padding: 8px 16px;
+  box-shadow: 0 1px 10px #ccc;
 }
 .navbar_start,
 .navbar_middle,
 .navbar_end {
   display: flex;
+  align-items: flex-end;
+}
+.navbar_start {
+  align-items: center;
 }
 .navbar_start img {
   height: 40px;
   width: 40px;
 }
+.navbar_search {
+  margin: 0 10px;
+  padding-right: 8px;
+  border-radius: 20px;
+  background-color: #eee;
+}
+.navbar_start input {
+  outline: none;
+  border: none;
+  width: 180px;
+  padding: 5px 0;
+  padding-left: 0;
+  background-color: #eee;
+  font-size: 0.9rem;
+}
+.navbar .MuiIconButton-root {
+  background-color: #ddd;
+  border-radius: 50%;
+  padding: 8px;
+}
+.navbar .MuiIconButton-root:hover {
+  background-color: rgb(211, 211, 211);
+}
+.navbar_end .MuiSvgIcon-root {
+  color: #000;
+}
 .navbar_search-icon-btn {
   background-color: #eee !important;
-  padding: 8px !important;
+  color: grey !important;
 }
-.navbar_icon-btn {
-  background-color: #ddd !important;
+
+.navbar_option {
+  padding: 0 30px;
+}
+
+.navbar_option .MuiSvgIcon-root {
+  color: grey;
+  font-size: 2rem;
 }
