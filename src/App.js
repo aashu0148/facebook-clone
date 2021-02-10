@@ -6,10 +6,13 @@ import Sidebar from "./components/Sidebar";
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <div className="App"
+              <Navbar optionActive="home" />
         {/* <Navbar /> */}
-        <Sidebar />
-      </div>
+      <div className="App_body">
+      <Sidebar />
+      </div>  
+    </div>
     );
   }
 }
