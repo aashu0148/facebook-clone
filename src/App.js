@@ -7,8 +7,10 @@ class App extends Component {
     return (
       <div className="App">
         <Navbar optionActive="home" />
+        <div className="App_body">
         <Sidebar />
         <Feed />
+        </div>
       </div>
     );
   }
