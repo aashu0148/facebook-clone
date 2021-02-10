@@ -1,0 +1,36 @@
+.feed {
+  padding: 20px 10px;
+}
+
+.feed_message {
+  background-color: #fff;
+}
+.feed_message hr {
+  border: 1px solid #eee;
+}
+.feed_message form {
+  display: flex;
+}
+.feed_message input {
+  padding: 10px;
+  border-radius: 15px;
+  outline: none;
+  border: none;
+  background-color: #eee;
+  margin: 5px 10px;
+  margin-right: 0;
+  font-size: 1rem;
+}
+.feed_message input:hover {
+  background-color: #ddd;
+}
+.feed_message-options {
+  display: flex;
+}
+.feed_message-option {
+  display: flex;
+  padding: 10px 20px;
+}
+.feed_message-option p {
+  margin-left: 10px;
+}
