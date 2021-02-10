@@ -1,20 +1,100 @@
 .navbar {
   display: flex;
+  justify-content: space-between;
   width: 100%;
+  padding: 0 16px;
+  box-shadow: 0 1px 10px #ccc;
 }
 .navbar_start,
 .navbar_middle,
 .navbar_end {
   display: flex;
+  align-items: flex-end;
+}
+.navbar_start {
+  align-items: center;
+  padding: 8px 0;
 }
 .navbar_start img {
   height: 40px;
   width: 40px;
+  mask-image: linear-gradient(
+    to bottom,
+    rgba(65, 8, 15, 0.5),
+    rgba(54, 546, 79, 1),
+    rgba(54, 546, 79, 1)
+  );
+}
+.navbar_search {
+  margin: 0 10px;
+  padding-right: 8px;
+  border-radius: 20px;
+  background-color: #eee;
+}
+.navbar_start input {
+  outline: none;
+  border: none;
+  width: 180px;
+  padding: 5px 0;
+  padding-left: 0;
+  background-color: #eee;
+  font-size: 0.9rem;
+}
+.navbar .MuiIconButton-root {
+  background-color: #ddd;
+  border-radius: 50%;
+  padding: 8px;
+}
+.navbar .MuiIconButton-root:hover {
+  background-color: rgb(211, 211, 211);
+}
+.navbar_end .MuiSvgIcon-root {
+  color: #000;
 }
 .navbar_search-icon-btn {
   background-color: #eee !important;
-  padding: 8px !important;
+  color: grey !important;
 }
-.navbar_icon-btn {
-  background-color: #ddd !important;
+
+.navbar_option {
+  padding: 5px 35px;
+  margin: 0 5px;
+  cursor: pointer;
+}
+.navbar_option-active {
+  border-bottom: 4px solid #1877f2;
+}
+.navbar_option-active .MuiSvgIcon-root {
+  color: #1877f2 !important;
+}
+
+.navbar_option .MuiSvgIcon-root {
+  color: grey;
+  font-size: 2.1rem;
+}
+
+.navbar_end {
+  align-items: center;
+  margin-right: 10px;
+}
+
+.navbar_profile {
+  display: flex;
+  border-radius: 20px;
+  background: #ddd;
+  align-items: center;
+  overflow: hidden;
+}
+.navbar_profile p {
+  font-weight: 500;
+  margin: 0 5px;
+}
+.navbar_end .MuiIconButton-root {
+  margin-left: 10px;
+}
+
+@media (max-width: 1200px) {
+  .navbar_profile p {
+    display: none;
+  }
 }
