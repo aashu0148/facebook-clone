@@ -30,6 +30,7 @@
 .feed_message-option {
   display: flex;
   padding: 10px 20px;
+  cursor: pointer;
 }
 .feed_message-option p {
   margin-left: 10px;
