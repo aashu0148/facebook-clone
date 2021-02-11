@@ -1,10 +1,13 @@
 import React from "react";
 import StoryReel from "./StoryReel";
 import "./Feed.css";
+import Post from "./Post";
+
 import { Avatar } from "@material-ui/core";
 import VideocamIcon from "@material-ui/icons/Videocam";
 import PhotoLibraryIcon from "@material-ui/icons/PhotoLibrary";
 import InsertEmoticonIcon from "@material-ui/icons/InsertEmoticon";
+
 function Feed() {
   const messageHandler = (e) => {
     e.preventDefault();
@@ -36,6 +39,14 @@ function Feed() {
           </div>
         </div>
       </div>
+
+      <Post
+        profile=" "
+        username="User"
+        timestamp="24 ghante"
+        message="Yo ek message hai."
+        image="https://cdn.pixabay.com/photo/2019/05/04/15/24/art-4178302__340.jpg"
+      />
     </div>
   );
 }
