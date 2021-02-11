@@ -1,4 +1,8 @@
 .App {
+
+}
+.App_body{
+  display: flex;
 }
 
 @media (prefers-reduced-motion: no-preference) {

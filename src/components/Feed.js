@@ -18,7 +18,7 @@ function Feed() {
           <Avatar src="https://cdn.pixabay.com/photo/2016/11/22/21/42/adult-1850703__340.jpg" />
           <input type="text" placeholder="What's on your mind ?" />
           <input type="text" placeholder="Image url (optional)" />
-          <button onClick={messageHandler}></button>
+          <button onClick={messageHandler}>Post</button>
         </form>
         <hr />
         <div className="feed_message-options">
