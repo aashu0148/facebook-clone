@@ -4,12 +4,19 @@
 
 .feed_message {
   background-color: #fff;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 7px;
 }
 .feed_message hr {
-  border: 1px solid #eee;
+  border: 0.1px solid #eee;
 }
 .feed_message form {
   display: flex;
+}
+.feed_message form > button{
+  display: none;
 }
 .feed_message input {
   padding: 10px;
@@ -29,7 +36,13 @@
 }
 .feed_message-option {
   display: flex;
+  margin: 5px;
   padding: 10px 20px;
+  cursor: pointer;
+}
+.feed_message-option:hover{
+  background-color: #eee;
+  border-radius: 10px;
 }
 .feed_message-option p {
   margin-left: 10px;

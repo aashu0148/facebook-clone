@@ -1,14 +1,7 @@
-.App {
-
-}
-.App_body{
+.App_body {
   display: flex;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+  justify-content: space-between;
+  background-color: rgb(231, 232, 233);
 }
 
 .App-header {
@@ -34,4 +27,3 @@
     transform: rotate(360deg);
   }
 }
-
