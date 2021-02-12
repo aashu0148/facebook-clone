@@ -8,6 +8,8 @@ import wow from "../assets/reactions/wow.svg";
 import sad from "../assets/reactions/sad.svg";
 import "./Reaction.css";
 
+import LikeIcon from "@material-ui/icons/ThumbUpOutlined";
+
 function Reaction({ type, size, ...props }) {
   let reaction;
   switch (type) {
@@ -32,6 +34,14 @@ function Reaction({ type, size, ...props }) {
     case "haha":
       reaction = haha;
       break;
+    case "default":
+      return (
+        <div style={{ display: "flex" }} data-type={`${type}`}>
+          <LikeIcon style={{ height: "18px", width: "18px" }} />
+
+          <p style={{ textTransform: "capitalize" }}>{props.children}</p>
+        </div>
+      );
   }
   let dimension = 18;
   if (size) dimension = size;

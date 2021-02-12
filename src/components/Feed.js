@@ -46,6 +46,9 @@ function Feed() {
         timestamp="24 ghante"
         message="Yo ek message hai."
         image="https://cdn.pixabay.com/photo/2019/05/04/15/24/art-4178302__340.jpg"
+        reactions={{ haha: 1, like: 1 }}
+        yourReaction="like"
+        comments={0}
       />
     </div>
   );

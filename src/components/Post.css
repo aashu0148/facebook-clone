@@ -34,6 +34,10 @@
   padding: 0 10px;
   cursor: pointer;
   display: flex;
+  align-items: flex-end;
+}
+.post_reaction p {
+  margin-left: 5px;
 }
 .post_bottom {
   display: flex;
