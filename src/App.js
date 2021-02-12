@@ -9,7 +9,7 @@ import Login from "./components/Login";
 
 class App extends Component {
   render() {
-    const user = null;
+    const user = true;
     return (
       <div className="App">
         {!user ? <Login /> : <></>}
