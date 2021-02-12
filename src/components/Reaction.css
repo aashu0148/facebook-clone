@@ -1,0 +1,26 @@
+.reaction {
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-transform: capitalize;
+  background-position: center center;
+}
+
+.reaction_haha {
+  color: #f7b125;
+}
+.reaction_like {
+  color: #2078f4;
+}
+.reaction_love {
+  color: #f33e58;
+}
+.reaction_wow {
+  color: #f7b125;
+}
+.reaction_sad {
+  color: #f7b125;
+}
+.reaction_angry {
+  color: #e9710f;
+}
