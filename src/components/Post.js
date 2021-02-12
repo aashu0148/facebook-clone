@@ -44,10 +44,10 @@ class Post extends Component {
         }, 850);
       });
       item.addEventListener("mouseleave", () => {
-        item.children[0].style.display = "none";
         setTimeout(() => {
+          item.children[0].style.display = "none";
           item.children[0].classList.remove("post_reaction-tab-active");
-        }, 200);
+        }, 400);
       });
     });
   }
