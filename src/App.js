@@ -9,7 +9,7 @@ import Login from "./components/Login";
 
 class App extends Component {
   render() {
-    const user = null;
+    const user = "nitish";
     return (
       <div className="App">
         {!user ? (<Login />) : (
@@ -27,4 +27,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default App; 
