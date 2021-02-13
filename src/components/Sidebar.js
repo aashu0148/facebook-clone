@@ -9,14 +9,13 @@ import VideoLibraryIcon from "@material-ui/icons/VideoLibrary";
 import ExpandMoreOutlinedIcon from "@material-ui/icons/ExpandMoreOutlined";
 import LocalHospitalIcon from "@material-ui/icons/LocalHospital";
 
-function Sidebar() {
+import { connect } from "react-redux";
+
+function Sidebar(props) {
   return (
     <div className="sidebar_container">
       <div className="sidebar">
-        <SidebarRow
-          src="https://scontent.fdel2-1.fna.fbcdn.net/v/t1.0-1/p200x200/102554868_1143928059316551_5050881372592275456_o.jpg?_nc_cat=107&ccb=2&_nc_sid=7206a8&_nc_ohc=SgpJp1fI7V8AX9DLB6B&_nc_ht=scontent.fdel2-1.fna&tp=6&oh=4af7a7c4c5451699883405e889d000bd&oe=6048E284"
-          title="Dinesh Soni"
-        />
+        <SidebarRow src={props.photo} title={props.user} />
         <SidebarRow
           src="https://static.xx.fbcdn.net/rsrc.php/v3/yg/r/kOxV5aCYUAE.png"
           title="COVID-19 Information Center"
@@ -38,4 +37,11 @@ function Sidebar() {
   );
 }
 
-export default Sidebar;
+const mapStateToProps = (state) => {
+  return {
+    user: state.user,
+    photo: state.userPhoto,
+  };
+};
+
+export default connect(mapStateToProps)(Sidebar);

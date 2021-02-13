@@ -11,12 +11,16 @@ import AddIcon from "@material-ui/icons/Add";
 import ForumIcon from "@material-ui/icons/Forum";
 import NotificationsActiveIcon from "@material-ui/icons/NotificationsActive";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
+
+import { connect } from "react-redux";
+
 class Navbar extends Component {
   componentDidMount() {
     document
       .querySelector(`.navbar_${this.props.optionActive}`)
       .classList.add("navbar_option-active");
   }
+
   render() {
     return (
       <div className="navbar_container">
@@ -50,8 +54,12 @@ class Navbar extends Component {
 
           <div className="navbar_end">
             <div className="navbar_profile">
-              <Avatar />
-              <p>Name sample</p>
+              <Avatar src={this.props.photo} />
+              <p>
+                {this.props.user
+                  ? this.props.user.substr(0, this.props.user.indexOf(" "))
+                  : ""}
+              </p>
             </div>
             <IconButton>
               <AddIcon />
@@ -72,4 +80,11 @@ class Navbar extends Component {
   }
 }
 
-export default Navbar;
+const mapStateToProps = (state) => {
+  return {
+    user: state.user,
+    photo: state.userPhoto,
+  };
+};
+
+export default connect(mapStateToProps)(Navbar);

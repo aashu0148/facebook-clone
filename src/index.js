@@ -7,9 +7,9 @@ import reportWebVitals from "./reportWebVitals";
 import reducer from "./store/reducer";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
-
+import { composeWithDevTools } from "redux-devtools-extension";
 ReactDOM.render(
-  <Provider store={createStore(reducer)}>
+  <Provider store={createStore(reducer, composeWithDevTools())}>
     <App />
   </Provider>,
   document.getElementById("root")
