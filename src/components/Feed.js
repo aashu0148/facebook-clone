@@ -2,6 +2,7 @@ import React from "react";
 import StoryReel from "./StoryReel";
 import "./Feed.css";
 import Post from "./Post";
+import db from "../firebase";
 
 import { Avatar } from "@material-ui/core";
 import VideocamIcon from "@material-ui/icons/Videocam";
@@ -12,6 +13,18 @@ function Feed() {
   const messageHandler = (e) => {
     e.preventDefault();
   };
+
+  let posts = [];
+
+  db.collection("posts").onSnapshot((snap) => {
+    console.log(snap);
+    snap.docs.map((item) => {
+      posts.push({
+        id: item.id,
+        data: item.data(),
+      });
+    });
+  });
 
   return (
     <div className="feed">
