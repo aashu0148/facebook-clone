@@ -3,7 +3,6 @@ import React, { Component } from "react";
 import "./Post.css";
 import Reaction from "./Reaction";
 
-import LikeIcon from "@material-ui/icons/ThumbUpOutlined";
 import MessageIcon from "@material-ui/icons/ChatBubbleOutlineOutlined";
 
 class Post extends Component {
@@ -27,9 +26,32 @@ class Post extends Component {
       myState.yourReaction = reaction;
       this.setState(myState);
     };
+    const addReaction = () => {
+      clearTimeout(openingTimeout);
+      const myState = { ...this.state };
+      if (myState.reactions[myState.yourReaction]) {
+        if (myState.reactions[myState.yourReaction] > 1) {
+          myState.reactions[myState.yourReaction] -= 1;
+        } else {
+          delete myState.reactions[myState.yourReaction];
+        }
+        myState.yourReaction = undefined;
+      } else {
+        if (myState.reactions.like) {
+          myState.reactions.like += 1;
+        } else {
+          myState.reactions.like = 1;
+        }
+        myState.yourReaction = "like";
+      }
+      this.setState(myState);
+    };
+
+    var openingTimeout, closingTimeout;
 
     document.querySelectorAll(".post_reaction-tab").forEach((item) => {
       item.addEventListener("click", (e) => {
+        e.stopPropagation();
         const type = e.target.dataset.type;
         changeReaction(type);
         item.style.display = "none";
@@ -38,33 +60,37 @@ class Post extends Component {
     });
     document.querySelectorAll(".post_like").forEach((item) => {
       item.addEventListener("mouseenter", () => {
+        clearTimeout(closingTimeout);
         item.children[0].style.display = "flex";
-        setTimeout(() => {
+        openingTimeout = setTimeout(() => {
           item.children[0].classList.add("post_reaction-tab-active");
         }, 850);
       });
       item.addEventListener("mouseleave", () => {
-        setTimeout(() => {
+        clearTimeout(openingTimeout);
+        closingTimeout = setTimeout(() => {
           item.children[0].style.display = "none";
           item.children[0].classList.remove("post_reaction-tab-active");
         }, 400);
       });
+      item.addEventListener("click", addReaction);
     });
   }
 
   state = {
-    reactions: { haha: 1, like: 1 },
-    yourReaction: "haha",
-    noOfReactions: 2,
-    comments: 0,
+    reactions: this.props.reactions,
+    yourReaction: this.props.yourReaction,
+    comments: this.props.comments,
   };
 
   render() {
     const postReactions = [];
+    let totalReactions = 0;
     let i = 0;
     for (let property in this.state.reactions) {
       postReactions.push(<Reaction key={i} type={property} />);
       ++i;
+      totalReactions += this.state.reactions[property];
     }
 
     return (
@@ -82,7 +108,10 @@ class Post extends Component {
           <img src={this.props.image} />
         </div>
         <div className="post_activity">
-          <div className="post_reaction">{postReactions}</div>
+          <div className="post_reaction">
+            {postReactions}
+            <p>{totalReactions}</p>
+          </div>
           <div>{this.state.comments} comments</div>
         </div>
         <hr />
@@ -100,10 +129,10 @@ class Post extends Component {
 
             {/* <LikeIcon /> */}
             <Reaction
-              type={this.state.yourReaction}
+              type={this.state.yourReaction || "default"}
               class={this.state.yourReaction}
             >
-              {this.state.yourReaction}
+              {this.state.yourReaction || "like"}
             </Reaction>
           </div>
           <div className="post_comment">
