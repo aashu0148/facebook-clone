@@ -2,13 +2,32 @@ import { Avatar } from "@material-ui/core";
 import React, { Component } from "react";
 import "./Post.css";
 import Reaction from "./Reaction";
+import db from "../firebase";
+import { connect } from "react-redux";
 
 import MessageIcon from "@material-ui/icons/ChatBubbleOutlineOutlined";
 
 class Post extends Component {
+  uploadingTimeout;
+  uploadReaction() {
+    clearTimeout(this.uploadingTimeout);
+    this.uploadingTimeout = setTimeout(() => {
+      db.collection("posts")
+        .doc(this.props.id)
+        .update({
+          reactions: this.state.reactions,
+          everyReaction: {
+            ...this.props.everyReaction,
+            [this.props.uid]: "" + this.state.yourReaction,
+          },
+        });
+    }, 3000);
+  }
+
   componentDidMount() {
     const changeReaction = (reaction) => {
       if (!reaction) return;
+      this.uploadReaction();
       const myState = { ...this.state };
       if (myState.reactions[myState.yourReaction]) {
         if (myState.reactions[myState.yourReaction] > 1) {
@@ -27,6 +46,7 @@ class Post extends Component {
       this.setState(myState);
     };
     const addReaction = () => {
+      this.uploadReaction();
       clearTimeout(openingTimeout);
       const myState = { ...this.state };
       if (myState.reactions[myState.yourReaction]) {
@@ -35,7 +55,7 @@ class Post extends Component {
         } else {
           delete myState.reactions[myState.yourReaction];
         }
-        myState.yourReaction = undefined;
+        myState.yourReaction = "";
       } else {
         if (myState.reactions.like) {
           myState.reactions.like += 1;
@@ -64,14 +84,14 @@ class Post extends Component {
         item.children[0].style.display = "flex";
         openingTimeout = setTimeout(() => {
           item.children[0].classList.add("post_reaction-tab-active");
-        }, 850);
+        }, 700);
       });
       item.addEventListener("mouseleave", () => {
         clearTimeout(openingTimeout);
         closingTimeout = setTimeout(() => {
           item.children[0].style.display = "none";
           item.children[0].classList.remove("post_reaction-tab-active");
-        }, 400);
+        }, 300);
       });
       item.addEventListener("click", addReaction);
     });
@@ -88,7 +108,8 @@ class Post extends Component {
     let totalReactions = 0;
     let i = 0;
     for (let property in this.state.reactions) {
-      postReactions.push(<Reaction key={i} type={property} />);
+      if (this.state.reactions[property] > 0)
+        postReactions.push(<Reaction key={i} type={property} />);
       ++i;
       totalReactions += this.state.reactions[property];
     }
@@ -99,7 +120,7 @@ class Post extends Component {
           <Avatar src={this.props.profile} />
           <div>
             <h4 className="post_username">{this.props.username}</h4>
-            <p>{this.props.timestamp}</p>
+            <p>{new Date(this.props.timestamp?.toDate()).toUTCString()}</p>
           </div>
         </div>
         <hr />
@@ -110,7 +131,7 @@ class Post extends Component {
         <div className="post_activity">
           <div className="post_reaction">
             {postReactions}
-            <p>{totalReactions}</p>
+            <p>{totalReactions || " "}</p>
           </div>
           <div>{this.state.comments} comments</div>
         </div>
@@ -129,7 +150,11 @@ class Post extends Component {
 
             {/* <LikeIcon /> */}
             <Reaction
-              type={this.state.yourReaction || "default"}
+              type={
+                this.state.yourReaction == ""
+                  ? "default"
+                  : this.state.yourReaction
+              }
               class={this.state.yourReaction}
             >
               {this.state.yourReaction || "like"}
@@ -145,4 +170,10 @@ class Post extends Component {
   }
 }
 
-export default Post;
+const mapStateToProps = (state) => {
+  return {
+    uid: state.uid,
+  };
+};
+
+export default connect(mapStateToProps)(Post);

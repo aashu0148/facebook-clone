@@ -12,7 +12,8 @@ function Login(props) {
       .then((result) => {
         let name = result.user.displayName;
         let url = result.user.photoURL;
-        props.login(name, url);
+        let id = result.user.uid;
+        props.login(name, url, id);
         props.history.push("/");
       })
       .catch((error) => alert(error.message));
@@ -36,8 +37,8 @@ const mapStateToProps = () => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    login: (name, photo) =>
-      dispatch({ type: "actionTypes.LOGIN", name: name, photo: photo }),
+    login: (name, photo, id) =>
+      dispatch({ type: actionTypes.LOGIN, name: name, photo: photo, uid: id }),
   };
 };
 
