@@ -1,18 +1,25 @@
-.sidebarRow{
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    padding: 10px;
+.sidebarRow {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 0 8px;
 }
-.sidebarRow:hover{
-    background-color: lightgray;
-    border-radius: 10px;
+.sidebarRow:hover {
+  background-color: lightgray;
+  border-radius: 10px;
 }
-.sidebarRow > h4{
-    font-weight: 600;
-    margin-left: 20px;
+.sidebarRow > h4 {
+  font-weight: 600;
+  font-size: 15px;
+  margin-left: 10px;
+  padding: 12px 0;
 }
-.sidebarRow > .MuiSvgIcon-root{
-    font-size: xx-large;
-    color: #2e81f4;
-} 
+.sidebarRow > .MuiAvatar-root {
+  width: 28px;
+  height: 28px;
+}
+.sidebarRow > .MuiSvgIcon-root {
+  width: 28px;
+  height: 28px;
+  color: #2e81f4;
+}
