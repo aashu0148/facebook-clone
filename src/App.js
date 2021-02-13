@@ -12,16 +12,13 @@ class App extends Component {
     const user = "nitish";
     return (
       <div className="App">
-        {!user ? (<Login />) : (
-          <>
-           <Navbar optionActive="home" />
+        {!user ? <Login /> : <></>}
+        <Navbar optionActive="home" />
         <div className="App_body">
           <Sidebar />
           <Feed />
           <Widgets />
         </div>
-        </>
-        )} 
       </div>
     );
   }
