@@ -19,51 +19,53 @@ class Navbar extends Component {
   }
   render() {
     return (
-      <div className="navbar">
-        <div className="navbar_start">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Facebook_f_logo_%282019%29.svg/1200px-Facebook_f_logo_%282019%29.svg.png"></img>
-          <div className="navbar_search">
-            <IconButton className="navbar_search-icon-btn">
-              <SearchIcon />
-            </IconButton>
-            <input type="text" placeholder="Search Facebook"></input>
+      <div className="navbar_container">
+        <div className="navbar">
+          <div className="navbar_start">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Facebook_f_logo_%282019%29.svg/1200px-Facebook_f_logo_%282019%29.svg.png"></img>
+            <div className="navbar_search">
+              <IconButton className="navbar_search-icon-btn">
+                <SearchIcon />
+              </IconButton>
+              <input type="text" placeholder="Search Facebook"></input>
+            </div>
           </div>
-        </div>
-        <div className="navbar_middle">
-          <div className="navbar_option navbar_home">
-            <HomeIcon />
+          <div className="navbar_middle">
+            <div className="navbar_option navbar_home">
+              <HomeIcon />
+            </div>
+            <div className="navbar_option navbar_video">
+              <SubscriptionsIcon />
+            </div>
+            <div className="navbar_option navbar_store">
+              <StoreRoundedIcon />
+            </div>
+            <div className="navbar_option navbar_group">
+              <GroupRoundedIcon />
+            </div>
+            <div className="navbar_option navbar_gaming">
+              <SportsEsportsIcon />
+            </div>
           </div>
-          <div className="navbar_option navbar_video">
-            <SubscriptionsIcon />
-          </div>
-          <div className="navbar_option navbar_store">
-            <StoreRoundedIcon />
-          </div>
-          <div className="navbar_option navbar_group">
-            <GroupRoundedIcon />
-          </div>
-          <div className="navbar_option navbar_gaming">
-            <SportsEsportsIcon />
-          </div>
-        </div>
 
-        <div className="navbar_end">
-          <div className="navbar_profile">
-            <Avatar />
-            <p>Name sample</p>
+          <div className="navbar_end">
+            <div className="navbar_profile">
+              <Avatar />
+              <p>Name sample</p>
+            </div>
+            <IconButton>
+              <AddIcon />
+            </IconButton>
+            <IconButton>
+              <ForumIcon />
+            </IconButton>
+            <IconButton>
+              <NotificationsActiveIcon />
+            </IconButton>
+            <IconButton>
+              <ArrowDropDownIcon />
+            </IconButton>
           </div>
-          <IconButton>
-            <AddIcon />
-          </IconButton>
-          <IconButton>
-            <ForumIcon />
-          </IconButton>
-          <IconButton>
-            <NotificationsActiveIcon />
-          </IconButton>
-          <IconButton>
-            <ArrowDropDownIcon />
-          </IconButton>
         </div>
       </div>
     );

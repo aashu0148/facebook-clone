@@ -1,4 +1,8 @@
 .sidebar {
   /* margin-top: 20px; */
   padding: 10px;
+  position: fixed;
+}
+.sidebar_container {
+  width: 302px;
 }

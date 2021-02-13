@@ -1,3 +1,6 @@
+.navbar_container {
+  height: 58px;
+}
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -5,6 +8,9 @@
   padding: 0 16px;
   box-shadow: 0 1px 10px #ccc;
   margin-bottom: 5px;
+  position: fixed;
+  background-color: #fff;
+  z-index: 100;
 }
 .navbar_start,
 .navbar_middle,

@@ -1,3 +1,7 @@
 .widgets {
   margin-top: 20px;
+  position: fixed;
+}
+.widgets_container {
+  width: 302px;
 }
