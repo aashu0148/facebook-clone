@@ -16,15 +16,16 @@ function Feed() {
 
   let posts = [];
 
-  db.collection("posts").onSnapshot((snap) => {
-    console.log(snap);
-    snap.docs.map((item) => {
-      posts.push({
-        id: item.id,
-        data: item.data(),
+  db.collection("posts")
+    .orderBy("timestamp", "desc")
+    .onSnapshot((snap) => {
+      snap.docs.map((item) => {
+        posts.push({
+          id: item.id,
+          data: item.data(),
+        });
       });
     });
-  });
 
   return (
     <div className="feed">
@@ -52,6 +53,12 @@ function Feed() {
           </div>
         </div>
       </div>
+
+      {/* {
+        posts.map((post,i)=>{
+          return (<Post profile=)
+        })
+      } */}
 
       <Post
         profile=" "

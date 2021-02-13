@@ -37,7 +37,7 @@ const mapStateToProps = () => {
 const mapDispatchToProps = (dispatch) => {
   return {
     login: (name, photo) =>
-      dispatch({ type: actionTypes.LOGIN, name: name, photo: photo }),
+      dispatch({ type: "actionTypes.LOGIN", name: name, photo: photo }),
   };
 };
 

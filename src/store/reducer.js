@@ -7,7 +7,7 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.LOGIN: {
-      let myState = initialState;
+      let myState = { ...initialState };
       myState.user = action.name;
       myState.userPhoto = action.photo;
       return myState;

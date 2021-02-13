@@ -88,13 +88,18 @@
 .navbar_profile {
   display: flex;
   border-radius: 20px;
-  background: #ddd;
+  background: #ece9e9;
   align-items: center;
   overflow: hidden;
+  cursor: pointer;
+}
+.navbar_profile .MuiAvatar-root {
+  height: 28px;
+  width: 28px;
 }
 .navbar_profile p {
   font-weight: 500;
-  margin: 0 5px;
+  margin: 5px;
 }
 .navbar_end .MuiIconButton-root {
   margin-left: 10px;
