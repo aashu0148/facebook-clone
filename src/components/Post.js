@@ -2,6 +2,7 @@ import { Avatar } from "@material-ui/core";
 import React, { Component } from "react";
 import "./Post.css";
 import Reaction from "./Reaction";
+import Comment from "./Comment";
 import db from "../firebase";
 import { connect } from "react-redux";
 
@@ -12,7 +13,6 @@ class Post extends Component {
   uploadReaction() {
     clearTimeout(this.uploadingTimeout);
     this.uploadingTimeout = setTimeout(() => {
-      console.log("uploaded current reaction");
       db.collection("posts")
         .doc(this.props.id)
         .update({
@@ -112,7 +112,6 @@ class Post extends Component {
       totalReactions += this.state.reactions[property];
     }
 
-    console.log("render method called");
     return (
       <div className="post">
         <div className="post_top">
@@ -132,7 +131,9 @@ class Post extends Component {
             {postReactions}
             <p>{totalReactions || " "}</p>
           </div>
-          <div>{this.state.comments} comments</div>
+          <div className="post_activity-comments">
+            {this.state.comments} comments
+          </div>
         </div>
         <hr />
         <div className="post_bottom">
@@ -150,7 +151,6 @@ class Post extends Component {
               <Reaction size="39" type="angry" />
             </div>
 
-            {/* <LikeIcon /> */}
             <Reaction
               type={
                 this.state.yourReaction == ""
@@ -167,6 +167,7 @@ class Post extends Component {
           </div>
         </div>
         <hr />
+        <Comment />
       </div>
     );
   }
