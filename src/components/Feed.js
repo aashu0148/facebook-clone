@@ -26,6 +26,7 @@ class Feed extends Component {
         image: this.inputImage.value,
         reactions: {},
         everyReaction: {},
+        comments: [],
       });
       this.formRef.reset();
     };
@@ -90,7 +91,7 @@ class Feed extends Component {
               reactions={post.data.reactions || {}}
               everyReaction={post.data.everyReaction || {}}
               yourReaction={post.data.everyReaction[this.props.uid] || ""}
-              comments={0}
+              comments={post.data.comments.length || 0}
             />
           );
         })}

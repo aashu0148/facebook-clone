@@ -1,6 +1,9 @@
 .comment {
   padding: 5px 15px;
 }
+.comment_top {
+  margin-bottom: 10px;
+}
 .comment_top form {
   display: flex;
 }

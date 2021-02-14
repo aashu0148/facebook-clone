@@ -99,6 +99,7 @@ class Post extends Component {
     reactions: this.props.reactions,
     yourReaction: this.props.yourReaction,
     comments: this.props.comments,
+    showComment: false,
   };
 
   render() {
@@ -162,12 +163,18 @@ class Post extends Component {
               {this.state.yourReaction || "like"}
             </Reaction>
           </div>
-          <div className="post_comment">
+          <div
+            className="post_comment"
+            onClick={() =>
+              this.setState({ showComment: !this.state.showComment })
+            }
+          >
             <MessageIcon /> <p>Comment</p>
           </div>
         </div>
         <hr />
-        <Comment />
+        {this.state.showComment ? <Comment id={this.props.id} /> : ""}
+        <br />
       </div>
     );
   }
