@@ -12,6 +12,7 @@ class Post extends Component {
   uploadReaction() {
     clearTimeout(this.uploadingTimeout);
     this.uploadingTimeout = setTimeout(() => {
+      console.log("uploaded current reaction");
       db.collection("posts")
         .doc(this.props.id)
         .update({
@@ -69,32 +70,29 @@ class Post extends Component {
 
     var openingTimeout, closingTimeout;
 
-    document.querySelectorAll(".post_reaction-tab").forEach((item) => {
-      item.addEventListener("click", (e) => {
-        e.stopPropagation();
-        const type = e.target.dataset.type;
-        changeReaction(type);
-        item.style.display = "none";
-        item.classList.remove("post_reaction-tab-active");
-      });
+    this.postReactionTab.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const type = e.target.dataset.type;
+      changeReaction(type);
+      this.postReactionTab.style.display = "none";
+      this.postReactionTab.classList.remove("post_reaction-tab-active");
     });
-    document.querySelectorAll(".post_like").forEach((item) => {
-      item.addEventListener("mouseenter", () => {
-        clearTimeout(closingTimeout);
-        item.children[0].style.display = "flex";
-        openingTimeout = setTimeout(() => {
-          item.children[0].classList.add("post_reaction-tab-active");
-        }, 700);
-      });
-      item.addEventListener("mouseleave", () => {
-        clearTimeout(openingTimeout);
-        closingTimeout = setTimeout(() => {
-          item.children[0].style.display = "none";
-          item.children[0].classList.remove("post_reaction-tab-active");
-        }, 300);
-      });
-      item.addEventListener("click", addReaction);
+
+    this.postLike.addEventListener("mouseenter", () => {
+      clearTimeout(closingTimeout);
+      this.postLike.children[0].style.display = "flex";
+      openingTimeout = setTimeout(() => {
+        this.postLike.children[0].classList.add("post_reaction-tab-active");
+      }, 700);
     });
+    this.postLike.addEventListener("mouseleave", () => {
+      clearTimeout(openingTimeout);
+      closingTimeout = setTimeout(() => {
+        this.postLike.children[0].style.display = "none";
+        this.postLike.children[0].classList.remove("post_reaction-tab-active");
+      }, 300);
+    });
+    this.postLike.addEventListener("click", addReaction);
   }
 
   state = {
@@ -114,6 +112,7 @@ class Post extends Component {
       totalReactions += this.state.reactions[property];
     }
 
+    console.log("render method called");
     return (
       <div className="post">
         <div className="post_top">
@@ -137,8 +136,11 @@ class Post extends Component {
         </div>
         <hr />
         <div className="post_bottom">
-          <div className="post_like">
-            <div className="post_reaction-tab">
+          <div ref={(el) => (this.postLike = el)} className="post_like">
+            <div
+              ref={(el) => (this.postReactionTab = el)}
+              className="post_reaction-tab"
+            >
               <Reaction size="39" type="like" />
               <Reaction size="39" type="love" />
               <Reaction size="39" type="care" />
