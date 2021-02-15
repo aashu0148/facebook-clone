@@ -13,5 +13,5 @@ step-4: run "npm install" command to download all the modules and dependencies.
 step-5: run "npm start" to run it in your computer.
 
 
-![Facebook Clone](Facebook Clone-1.gif)
+![FacebookClone](Facebook%20Clone-1.gif)
 
